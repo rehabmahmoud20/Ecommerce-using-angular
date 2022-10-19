@@ -1,0 +1,10 @@
+.load{
+    color: red !important;
+    background-color: aqua!important;
+    
+}
+.spinner-border {
+    --bs-spinner-width: 10rem !important;
+    --bs-spinner-height: 10rem !important;
+    border: var(--bs-spinner-border-width) solid currentcolor;
+}

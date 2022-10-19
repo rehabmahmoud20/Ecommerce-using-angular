@@ -1,0 +1,11 @@
+<section class="position-relative ">
+  <div class="container">
+    <app-loader></app-loader>
+   
+    <div class="row g-2">
+      <div class="col-md-4" *ngFor="let product of products">
+        <app-produc-card [product]="product"></app-produc-card>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg  bg-color mb-4">
+    <div class="container-fluid">
+      <h1 class="navbar-brand mb-0" routerLink="/home" style="cursor: pointer;" >Products</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+          <div class="icons d-flex">
+            <li class=" position-relative">
+              <span class=" rounded-circle d-flex justify-content-center align-items-center text-white position-absolute count icon-span">{{productsCount}}</span>
+         <a routerLink="shoppingacart"><fa-icon class="fa-xl  px-3 text-white" role="button" [icon]="cart"></fa-icon></a>    
+            </li>
+            <li class=" position-relative ">
+              <span class=" rounded-circle d-flex justify-content-center align-items-center text-white position-absolute count icon-span">{{favProduCount}}</span>
+              <a routerLink="/wishList" ><fa-icon class="fa-xl px-3 text-danger" role="button" [icon]="heart"></fa-icon></a>    
+            </li>
+          </div>
+       
+          <li class="nav-item my-3 my-0-md">
+            <a class="nav-link active fs-4" aria-current="page"routerLink="/login" routerLinkActive="bg-white rounded" >Login</a>
+          </li>
+          
+         
+          <li class="nav-item">
+            <a class="nav-link active fs-4" aria-current="page" routerLink="/register" routerLinkActive="bg-white rounded">Register</a>
+          </li>
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+ 

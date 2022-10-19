@@ -1,0 +1,57 @@
+<section class="cards py-5 ">
+    <div class="container">
+    <app-loader></app-loader>
+
+  <h2 class="text-center mb-4 fw-bolder fs-1 ">favourit products : {{ productsCount }}</h2>
+
+      <div class="row text-center">
+        
+        <div class="col-md-6 mx-auto ">
+          
+          <ng-template [ngIf]="favouriteArray.length == 0"  >
+            <img src="../../assets/images-removebg-preview.png" class="  mx-auto w-75 mb-4"  alt="shopping">
+            <p class="fw-bolder fs-1 mb-5">No favourite products yet <span >😔</span> </p>
+
+            </ng-template
+          >
+          <div class="card mb-5 d-flex text-dark fs-3" *ngFor="let product of favouriteArray">
+            <div >
+              <a [routerLink]="['/productDetails', product.id]">
+                <img [src]="product.image" class="card-img-top w-50" alt="..." />
+              </a>
+              <div class="card-body p-3 mb-4 ">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <h5 class="card-title">
+                  {{ product.price | currency: "AUD":"EG":"2.":"fr" }}
+                </h5>
+      
+                <h5 class="card-title">
+                  {{ product.createdAt | date: "MMMM YYYY" }}
+                </h5>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <fa-icon
+                      class="bg-transparent  spinner-grow fa-2xl text-warning"
+                      [icon]="cart"
+                      role="button"
+                      (click)="addToCart(product)"
+                    ></fa-icon>
+                  </div>
+        
+                  <button (click)="remove(product)" class='btn'>
+                    <fa-icon class="fa-xl" role="button" [icon]="trash"></fa-icon>
+                  </button>
+                </div>
+            </div>
+            
+           
+    
+              
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+   
+</section>

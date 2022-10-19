@@ -1,0 +1,95 @@
+<section>
+  <div class="container">
+
+    <form class="mb-3" [formGroup]="registerForm" (ngSubmit)="submitRegister(registerForm)" class="w-75 mx-auto">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          formControlName="Name"
+          class="form-control mb-2 "
+          id="name"
+          aria-describedby="nameHelp"
+        />
+        <div *ngIf="formControls['Name'].errors && formControls['Name'].touched && !formControls['Name'].valid" class="alert alert-danger mb-2">
+          <p *ngIf="formControls['Name'].errors&&formControls['Name'].errors['required']" class="mb-0">Name is required</p>
+          <p *ngIf="formControls['Name'].errors&&formControls['Name'].errors['minlength']" class="mb-0"> Name min length is 10</p>
+          <p *ngIf="registerForm.get('Name')?.errors?.['maxlength']" class="mb-0"> Name max length is 10</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          formControlName="Email"
+          class="form-control mb-2"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <div class="alert alert-danger mb-2" *ngIf="formControls['Email'].errors && formControls['Email'].touched && !formControls['Email'].valid">
+          <p class="mb-0" *ngIf="formControls['Email'].errors&&formControls['Email'].errors['required']" class="mb-0">Email is required</p>
+          <p class="mb-0" *ngIf="formControls['Email'].errors&&formControls['Email'].errors['email']" class="mb-0">Email is not valid</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">user name</label>
+        <input
+          type="text"
+          formControlName="Username"
+          class="form-control mb-2"
+          id="username"
+          aria-describedby="nameHelp"
+       
+        />
+        <div  class="alert alert-danger mb-2" *ngIf="formControls['Username'].errors && formControls['Username'].touched && !formControls['Username'].valid">
+          <p *ngIf="formControls['Username'].errors&&formControls['Username'].errors['required']" class="mb-0">Username is required</p>
+          <p *ngIf="formControls['Username'].errors&&formControls['Username'].errors['minlength']" class="mb-0"> Username min length is 10</p>
+          <!-- <p class="mb-0">Name max-length is 5</p> -->
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          formControlName="Password"
+          class="form-control mb-2"
+          id="exampleInputPassword1"
+        />
+        <div class="alert alert-danger mb-2" *ngIf="formControls['Password'].errors && formControls['Password'].touched && !formControls['Password'].valid">
+          <p *ngIf="formControls['Password'].errors&&formControls['Password'].errors['required']" class="mb-0">Password is required</p>
+
+          <p class="mb-0" *ngIf="formControls['Password'].errors&&formControls['Password'].errors['pattern']">
+            Password must contain one capital letter one small and number min length is 8</p>
+
+
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >confirm password</label
+        >
+        <input
+          type="password"
+          formControlName="confirm_password"
+          class="form-control mb-2"
+          id="exampleInputPassword1"
+        />
+   <div class="alert alert-danger mb-2" *ngIf="formControls['confirm_password'].errors && formControls['confirm_password'].touched && !formControls['confirm_password'].valid">
+          <p *ngIf="formControls['confirm_password'].errors&&formControls['confirm_password'].errors['required']" class="mb-0">Password is required</p>
+
+          <p class="mb-0" *ngIf="formControls['confirm_password'].errors&&formControls['confirm_password'].errors['pattern']">
+            You should confirm the password</p>
+
+
+        </div>
+       
+       
+      </div>
+     
+      <button type="submit" click='confirm()'  class="btn btn-light mx-auto w-25 d-block mb-4" >Submit</button>
+    </form>
+    <p class="text-center">Have an account &nbsp;<a class="text-white" routerLink="/login">login</a></p>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section class="py-3">
+  <div class="container">
+    <form #productsForm="ngForm" (ngSubmit)="handleSubmitForm(productsForm)" class='w-75 mx-auto'>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          ngModel
+          name="email"
+          #email="ngModel"
+          required
+          pattern="\w+@\w+.com$"
+        />
+      </div>
+      <div
+        *ngIf="
+          (email.touched && !email.valid) ||
+          (productsForm.submitted && !email.valid)
+        "
+      >
+        <div *ngIf="email.errors &&email.errors['required']" class="text-danger form-text mb-2"
+        >This field is required</div>
+      </div>
+      <div
+        
+        *ngIf="email.errors && email.errors['pattern']"
+        class="form-text text-danger"
+      >
+        email is not valid please enter email like this example@axample.com
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="password"
+          ngModel
+          #password = 'ngModel'
+          required
+        />
+      </div>
+      <div *ngIf="( (password.touched && !password.valid) ||
+      (productsForm.submitted && !password.valid))">
+      <div *ngIf="password.errors &&password.errors['required']" class="text-danger form-text mb-4"
+        >Password is required</div>
+    </div>
+      <div>
+       
+
+      </div>
+
+      <button type="submit" [disabled]="productsForm.invalid" class="btn btn-light mx-auto w-25 d-block mb-4" >LogIn</button>
+    </form>
+    <p class="mx-auto text-center">Don't have account &nbsp; <a class="text-white" routerLink="/register">Register</a> </p>
+  </div>
+</section>
