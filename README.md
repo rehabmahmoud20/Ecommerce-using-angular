@@ -1,5 +1,13 @@
-# ProductsDisplay
-* ngrx
+# shopping cart using :
+
+* services
+* interface
+* routing
+* gurd
+* templete form
+* reactive form activate and deactivate
+* Ngrx
+* shared modules
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
 
