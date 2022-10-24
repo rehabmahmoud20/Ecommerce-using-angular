@@ -1,4 +1,4 @@
-# shopping cart using :
+# Ecommerse angular project using :
 
 * services
 * interface
