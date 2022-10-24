@@ -42,7 +42,9 @@ export class WishlistComponent implements OnInit {
 
     this._Store
       .select('addFavourite')
-      .subscribe((res) => (this.favouriteArray = res.items.slice()));
+      .subscribe(
+        (res) => (this.favouriteArray = JSON.parse(JSON.stringify(res.items)))
+      );
   }
   // handel remove from favourite
   remove(product: ProductDetails) {
@@ -65,6 +67,7 @@ export class WishlistComponent implements OnInit {
   addToCart(product: ProductDetails) {
     this._ProductscartService.changeCounterValue(1);
     this._ProductscartService.setProductsCards({ ...product, quantity: 0 });
-    this.productsPrice = this._ProductscartService.changeProductsPrice(product);
+    this._ProductscartService.setProductsCards({...product,proPrice:parseFloat(product.price)})
+
   }
 }

@@ -9,7 +9,7 @@ import{ProductDetails}from'../interfaces/product-details'
 })
 export class ProductDetailsComponent implements OnInit {
 id :string='';
-movieDetails:ProductDetails= {
+productDetail:ProductDetails= {
   name: '',
   image: '',
   count: 0,
@@ -20,7 +20,8 @@ movieDetails:ProductDetails= {
   id: '',
   reviews: [],
   quantity:0,
-  case:false
+  case:false,
+  proPrice:0
 }
   constructor(private _ProductsService:ProductsService,private _ActivatedRoute:ActivatedRoute) { 
 this.id=_ActivatedRoute.snapshot.params['id']
@@ -28,7 +29,7 @@ this.id=_ActivatedRoute.snapshot.params['id']
 
   ngOnInit(): void {
     this._ProductsService.getProductDetails(this.id).subscribe(response=>{
-      this.movieDetails = response;
+      this.productDetail = response;
     })
   }
 

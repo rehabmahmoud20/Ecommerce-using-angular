@@ -28,11 +28,11 @@ import { environment } from '../environments/environment';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { FavListComponent } from './fav-list/fav-list.component';
 import { LoaderComponent } from './loader/loader.component';
+import { StdDegressPipe } from './std-degress.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     // NavbarComponent,
     ProducCardComponent,
     ProducListComponent,
@@ -44,6 +44,7 @@ import { LoaderComponent } from './loader/loader.component';
     WishlistComponent,
     FavListComponent,
     LoaderComponent,
+    StdDegressPipe,
   ],
   imports: [
     BrowserModule,

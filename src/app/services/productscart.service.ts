@@ -6,18 +6,22 @@ import { ProductDetails } from '../interfaces/product-details';
   providedIn: 'root',
 })
 export class ProductscartService {
-  totalPrice: number = 0;
+  total:number = 0;
+
   constructor() {}
   intialArray: ProductDetails[] = [];
   private counter = new BehaviorSubject(0);
   private productsArray = new BehaviorSubject(this.intialArray);
   private heart = new BehaviorSubject(false);
   private faVProductcount = new BehaviorSubject(0);
+  private totalProdPrice = new BehaviorSubject(0);
 
   conterterValue = this.counter.asObservable();
   arrayValue = this.productsArray.asObservable();
   heartValue = this.heart.asObservable();
   favoCountVal = this.faVProductcount.asObservable();
+  totalPrice = this.totalProdPrice.asObservable();
+
 
   changeHeartVal(value: boolean) {
     this.heart.next(value);
@@ -31,10 +35,15 @@ export class ProductscartService {
     this.faVProductcount.next(val)
    }
 
-
-  changeProductsPrice(product: ProductDetails) {
-    this.totalPrice += parseFloat(product.price);
-    return this.totalPrice;
+// changing the total price
+  changeProductsPrice(value:number,operation:string) {
+    if(operation === "increase"){
+    this.total = value + this.total
+    }else{
+      this.total = this.total - value
+    }
+    
+    this.totalProdPrice.next(this.total)
   }
 
   setProductsCards(product: ProductDetails) {
@@ -49,10 +58,14 @@ export class ProductscartService {
     // customize the quantity of each item
     if (state) {
       this.intialArray[index].quantity++;
+      this.intialArray[index].proPrice += parseFloat(this.intialArray[index].price) ;
+
     } else {
       this.intialArray.push(product);
       index = this.intialArray.length - 1;
       this.intialArray[index].quantity = 1;
+      this.intialArray[index].proPrice = parseFloat(this.intialArray[index].price) ;
+
     }
   }
   decreasetheQuantity(product: ProductDetails) {

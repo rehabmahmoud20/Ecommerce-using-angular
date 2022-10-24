@@ -2,28 +2,40 @@
   <div class="container">
     <app-loader></app-loader>
 
-    <h2 >total price is : {{ productsTotalPrice }}</h2>
+    <h2 class="fs-3 mb-3">total price is : {{ productsTotalPrice | currency: "AUD":"EG":"2.":"fr"}}</h2>
     <div class="row">
-      <div class="col-md-6 mx-auto">
-        <ng-template [ngIf]="cartCount == 0" >
-          <img src="../../assets/empty-cart-flat-illustration-concept-vector-removebg-preview.png" class=" mx-auto "  alt="shopping">
-          </ng-template
-        >
+      
+      <div class=>
+        <div class="col-md-5 mx-auto">
+          <ng-template  [ngIf]="cartCount == 0 " >
+            <img src="../../assets/empty-cart-flat-illustration-concept-vector-removebg-preview.png"   alt="shopping">
+            </ng-template
+          >
+        </div>
+       
     
-        <div *ngFor="let product of prod" class="d-flex mb-3">
-          <img [src]="product.image" class="card-img-top w-25 me-3" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <h5 class="card-title">
-              {{ product.price | currency: "AUD":"EG":"2.":"fr" }}
+        <div *ngFor="let product of prod" class="d-flex mb-3 align-items-center">
+          <div class="col-md-4  offset-2 me-5">
+            <img [src]="product.image " class="card-img-top  rounded" alt="product" />
+
+          </div>
+          <div class="card-body col-md-4 ">
+            <h5 class="card-title fs-4 fw-bolder mb-4 fs-4">{{ product.name }}</h5>
+          <h5 class="card-title mb-4 fs-5">{{product.createdAt | date : 'MMMM YYYY'}}</h5>
+                           <p class="text-muted fs-5 mb-4"> {{product.rate}} ⭐⭐⭐⭐</p>
+            <h5 class="card-title fs-5 fst-italic ">
+              {{ product.proPrice | currency: "AUD":"EG":"2.":"fr" }}
             </h5>
-            <h5>quantity {{ product.quantity }}</h5>
-            <button class="btn me-4 btn-danger" (click)="decreaseAmount(product)">
+           <div class="quantity d-flex align-items-center ">
+            <button class="btn justify-content-center rounded-circle p-3 me-3 bg-info text-light " (click)="decreaseAmount(product)">
               -
             </button>
-            <button class="btn btn-success" (click)="increaseAmount(product)">
+            <h5 class="fw-bold fs-4"> {{ product.quantity }}</h5>
+            <button class="btn rounded-circle  p-3 ms-3 btn-info text-light" (click)="increaseAmount(product)">
               +
             </button>
+           </div>
+            
           </div>
         </div>
       </div>

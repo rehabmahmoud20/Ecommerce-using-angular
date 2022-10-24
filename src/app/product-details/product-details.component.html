@@ -1,19 +1,20 @@
 <section class="cards p-5 h-100">
-  <div class="row ">
+  <div class="row justify-content-center">
     <app-loader></app-loader>
 
-    <div class="col-md-6 mx-auto">
-      <div class="d-md-flex justify-content-center " >
-        <img [src]="movieDetails.image" class="card-img-top mb-2  w-50 mx-auto rounded" alt="product">
-      <div class="card-body offset-md-2 fs-1">
+    <div class="col-md-6">
+      <div class="d-flex flex-column">
+        <img [src]="productDetail.image" class="card-img-top mb-2  w-50 mx-auto rounded" alt="product">
+      <div class="card-body  fs-1 text-center">
   
-        <h3 class="card-title"> Product : {{movieDetails.name}}</h3>
-        <h3 class="card-title" >Price &nbsp;  &nbsp; &nbsp;: {{ movieDetails.price | currency:'AUD': 'EG':'2.':'fr'}}</h3>
+        <h3 class="card-title fw-bold w-100"> {{productDetail.name}}</h3>
+        <h3 class="card-title fs-5" > {{ productDetail.price | currency:'AUD': 'EG':'2.':'fr'}}</h3>
   
-        <h3 class="card-title"> Date  &nbsp; &nbsp; &nbsp; : {{movieDetails.createdAt | date : 'MMMM YYYY'}}</h3>
-    
+        <h3 class="card-title">{{productDetail.createdAt | date : 'MMMM YYYY'}}</h3>
+        <p class="text-muted fs-5 mb-4"> {{productDetail.rate}} ⭐⭐⭐⭐</p>
+
       
-      <div *ngIf="movieDetails.count > 0 then found else notFound"></div>
+      <div *ngIf="productDetail.count > 0 then found else notFound"></div>
       <ng-template #found >
         <p class="text-info">in stock</p>
         

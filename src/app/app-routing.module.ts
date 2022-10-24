@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: ProducListComponent,
-    canActivate: [AuthinticationGuard],
+    // canActivate: [AuthinticationGuard],
   },
   {
     path: 'wishList',

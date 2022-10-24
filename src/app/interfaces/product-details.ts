@@ -10,6 +10,7 @@ export interface ProductDetails {
     "reviews":string[];
     quantity:number;
     case:boolean;
+    proPrice:number;
 }
 
 

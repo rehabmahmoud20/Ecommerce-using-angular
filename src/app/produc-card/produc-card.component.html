@@ -1,40 +1,44 @@
-<section class="cards p-5 h-100">
-
-  <div class="card h-100 bg-transparent shadow border mx-auto" style="width: 18rem;">
-    <a [routerLink]="['/productDetails',product.id]">
-      <img [src]="product.image" class="card-img-top  " style="height: 350px;" alt="product">
-    </a>
-    <div class="card-body shadow">
-      <h5 class="card-title">{{product.name}}</h5>
-      <h5 class="card-title" >{{ product.price | currency:'AUD': 'EG':'2.':'fr'}}</h5>
-
-      <h5 class="card-title">{{product.createdAt | date : 'MMMM YYYY'}}</h5>
-  
+<section class="cards p-5 h-100 ">
+ 
+      <div class=" h-100 shadow  mx-auto pb-3" >
+        <a [routerLink]="['/productDetails',product.id]">
+          <img [src]="product.image" class="card-img-top   mb-3" style="height: 350px;" alt="product">
+        </a>
+        <div class="card-body  text-center">
+          <h5 class="card-title fs-5 fw-bold mb-3 text w-100">{{product.name}}</h5>
+          <h5 class="card-title fs-4 mb-3" >{{ product.price | currency:'AUD': 'EG':'2.':'fr'}}</h5>
     
-    <div *ngIf="product.count > 0 then found else notFound"></div>
-    <ng-template #found >
-      <p class="text-info">in stock</p>
       
-    </ng-template>
-    <ng-template #notFound >
-      <p class="text-danger">out of stoke</p>
-    </ng-template>
-    <div class="icons d-flex justify-content-around mx-2">
-      <div ><fa-icon class="fa-2xl " [icon]="cart" role="button"  (click)="addToCart(product)"  [ngClass]="product.count > 0 ? 'pe-auto' : 'pe-none'"></fa-icon></div>    
-      <div *ngIf="product.case then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock>
-        <fa-icon  class="fs-1 text-tranparent not-favourite" [icon]="favourite" role="button" (click)="addToFavorite(product)"></fa-icon>
-
-      </ng-template>
-      <ng-template #elseBlock>
-        <fa-icon class="fa-xl text-tranparent not-favourite bg-transparent fs-1 spinner-grow" [icon]="notFavorite" role="button" (click)="addToFavorite(product)"></fa-icon>
-      </ng-template>
-      
-    </div>
-      
-    </div>
+        
+        <div class="py-1 mb-2" *ngIf="product.count > 0 then found else notFound"></div>
+        <ng-template #found >
+          <p class="text-light bg-info py-2 fs-5">in stock</p>
+          
+        </ng-template>
+        <ng-template #notFound >
+          <p class="text-light bg-danger py-2 fs-5">out of stoke</p>
+        </ng-template>
+        <div class="icons d-flex justify-content-around mx-2">
+          <div ><fa-icon class="fa-2xl " [icon]="cart" role="button"  (click)="addToCart(product)"  [ngClass]="product.count > 0 ? 'pe-auto' : 'pe-none'"></fa-icon></div>    
+          <div *ngIf="product.case then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
+            <fa-icon  class="fs-1 text-tranparent not-favourite" [icon]="favourite" role="button" (click)="addToFavorite(product)"></fa-icon>
     
-  
-    </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <fa-icon class="fa-xl text-tranparent not-favourite bg-transparent fs-1 " [icon]="notFavorite" role="button" (click)="addToFavorite(product)"></fa-icon>
+          </ng-template>
+          
+        </div>
+          
+        </div>
+        
+      
+        </div>
+    <!-- </div> -->
+  <!-- </div> -->
+ 
+
+ 
 </section>
 

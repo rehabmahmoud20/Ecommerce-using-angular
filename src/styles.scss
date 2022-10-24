@@ -39,13 +39,10 @@ $productsDisplay-theme: mat.define-light-theme((
 @import '~bootstrap/scss/bootstrap';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background-color: black; color: gold; }
-.bg-color{
-  background-color: gold;
-}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  }
 .bg-transparent{
   background-color: transparent;
 }
 .shadow{
-  box-shadow: 0 0 0px 5px white!important;
+  box-shadow:  0 0  10px rgb(122, 119, 119)!important ;
 }

@@ -29,6 +29,7 @@ export class ProducCardComponent implements OnInit {
     reviews: [],
     quantity: 0,
     case: false,
+    proPrice:0,
   };
   notFavorite: any = faGratipay;
   favourite: any = faHeart;
@@ -36,7 +37,7 @@ export class ProducCardComponent implements OnInit {
   fav: boolean = false;
   productsCount: number = 0;
   productsArray: ProductDetails[] = [];
-  productsPrice: number = 0;
+  productPrice: number = 0;
   favouriteArray: ProductDetails[] = [];
   favouriteProductsCount: number = 0;
 
@@ -53,6 +54,10 @@ export class ProducCardComponent implements OnInit {
     this._ProductscartService.arrayValue.subscribe((val) => {
       this.productsArray = val;
     });
+    this._ProductscartService.totalPrice.subscribe((val) => {
+      this.productPrice = val;
+    });
+   
 //!favourit product count
     this._ProductscartService.favoCountVal.subscribe(
       (val) => (this.favouriteProductsCount = val)
@@ -78,7 +83,8 @@ export class ProducCardComponent implements OnInit {
 
   addToCart(product: ProductDetails) {
     this._ProductscartService.changeCounterValue(++this.productsCount);
-    this._ProductscartService.setProductsCards({ ...product, quantity: 0 });
-    this.productsPrice = this._ProductscartService.changeProductsPrice(product);
+    this._ProductscartService.setProductsCards({ ...product,quantity:1});
+    // increase the total price 
+    this._ProductscartService.changeProductsPrice(parseFloat(product.price),"increase");
   }
 }

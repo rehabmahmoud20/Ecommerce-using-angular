@@ -14,24 +14,24 @@
 
             </ng-template
           >
-          <div class="card mb-5 d-flex text-dark fs-3" *ngFor="let product of favouriteArray">
+          <div class=" mb-5 d-flex text-dark fs-3" *ngFor="let product of favouriteArray">
             <div >
               <a [routerLink]="['/productDetails', product.id]">
                 <img [src]="product.image" class="card-img-top w-50" alt="..." />
               </a>
               <div class="card-body p-3 mb-4 ">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <h5 class="card-title">
+                <h5 class="card-title fs-3 mb-4 fs-3 fw-bold">{{ product.name }}</h5>
+                <h5 class="card-title mb-2 fs-4 fst-italic mb-5 fw-bold">
                   {{ product.price | currency: "AUD":"EG":"2.":"fr" }}
                 </h5>
       
-                <h5 class="card-title">
+                <h5 class="card-title fs-3">
                   {{ product.createdAt | date: "MMMM YYYY" }}
                 </h5>
                 <div class="d-flex justify-content-between">
                   <div>
                     <fa-icon
-                      class="bg-transparent  spinner-grow fa-2xl text-warning"
+                      class="bg-transparent   fa-l "
                       [icon]="cart"
                       role="button"
                       (click)="addToCart(product)"
